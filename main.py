@@ -9,6 +9,7 @@ PASS = 'oauth:' #Sacar la PASS de https://twitchapps.com/tmi/
 #Conexion a twitch
 s = socket.socket()
 s.connect((HOST, PORT))
+#Los datos se envian a traves de bytes
 s.send(bytes("PASS " + PASS + "\r\n", "UTF-8"))
 s.send(bytes("NICK " + NICK + "\r\n", "UTF-8"))
 s.send(bytes("JOIN #" + NICK + " \r\n", "UTF-8"))
