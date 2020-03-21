@@ -1,10 +1,16 @@
 import socket
+from pynput.keyboard import Key, Controller
+import time
+
+#Creamos el teclado virtual
+keyboard = Controller()
+time.sleep(2)
 
 #Constantes para la conexion
 HOST = "irc.twitch.tv"
 PORT = 6667
 NICK = "bunno6661"
-PASS = 'oauth:' #Sacar la PASS de https://twitchapps.com/tmi/
+PASS = 'oauth:kc74c4wo1zaohukjl7onqh7yithfgi' #Sacar la PASS de https://twitchapps.com/tmi/
 
 #Conexion a twitch
 s = socket.socket()
@@ -40,5 +46,20 @@ while True:
 
         print(message)
 
-        if message == "Hola":
-            send_message("Acabas de decir hola")
+        if message == "w":
+            keyboard.press(Key.up)
+            time.sleep(1)
+            keyboard.release(Key.up)
+        elif message == "s":
+             keyboard.press(Key.down)
+             time.sleep(1)
+             keyboard.release(Key.down)
+        elif message == "d":
+            keyboard.press(Key.right)
+            time.sleep(1)
+            keyboard.release(Key.right)
+        elif message == "a":
+            keyboard.press(Key.left)
+            time.sleep(1)
+            keyboard.release(Key.left)
+        time.sleep(0.15)
